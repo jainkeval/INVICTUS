@@ -139,6 +139,11 @@ app.get("*", function(req, res){
 //_________________ROUTES_______________________________________//
 
 
-app.listen(3000, function(){
+// app.listen(3000, function(){
+// 	console.log("started!!");
+// })
+
+app.listen(process.env.PORT, process.env.IP, function(){
 	console.log("started!!");
 })
+
