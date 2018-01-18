@@ -7,7 +7,7 @@ var express     = require('express'),
     seedDB      = require('./seeds');
 
 
-mongoose.connect("mongodb://localhost/invictus");
+mongoose.connect("mongodb://localhost/invictus", {useMongoClient:true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 seedDB();
@@ -99,6 +99,7 @@ app.post("/events/:id/comments", function(req, res){
 			console.log(err);
 			res.redirect("/events");
 		} else {
+			console.log(req.body.comment);
 			//adding the comment to db
 			Comment.create(req.body.comment, function(err, comment){
 					if(err){
@@ -139,11 +140,11 @@ app.get("*", function(req, res){
 //_________________ROUTES_______________________________________//
 
 
-// app.listen(3000, function(){
-// 	console.log("started!!");
-// })
-
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(3000, function(){
 	console.log("started!!");
 })
+
+// app.listen(process.env.PORT, process.env.IP, function(){
+// 	console.log("started!!");
+// })
 
