@@ -99,13 +99,13 @@ app.post("/events/:id/comments", function(req, res){
 			console.log(err);
 			res.redirect("/events");
 		} else {
-			console.log(req.body.comment);
+			// console.log(req.body.comment);
 			//adding the comment to db
 			Comment.create(req.body.comment, function(err, comment){
 					if(err){
 						console.log(err);
 					} else {
-						// console.log(event.comments);
+						 // console.log(event.comments);
 						event.comments.push(comment);
 						event.save();
 						res.redirect('/events/' + event._id);
